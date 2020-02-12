@@ -1,5 +1,5 @@
-from generate import *
 import sys
+from generate import *
 
 pos = sys.argv[1]
 length = sys.argv[2]
