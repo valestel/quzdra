@@ -5,22 +5,22 @@ from morphs import *
 def random_morph(morphlist):
     quantity = random.randint(0, 2)
     morph = ""
-    if quantity != 0:
-        k = 0
-        while k < quantity:
-            morph = morph+random.choice(morphlist)
-            k += 1
+    if quantity:
+        for i in range(quantity):
+            morph = morph + random.choice(morphlist)
     return morph
 
 
 def generate_word(pos):
     stem = random_morph(prefixes) + random.choice(roots)
-    if pos == "n" or pos == "N":
+    if pos in ("n", "N"):
         ending = random_morph(suffixes_noun) + random.choice(flexion_noun)
-    elif pos == "a" or pos == "A":
+    elif pos in ("a", "A"):
         ending = random_morph(suffixes_adj) + random.choice(flexion_adj)
-    elif pos == "v" or pos == "V":
+    elif pos in ("v", "V"):
         ending = random.choice(suffixes_verb) + random.choice(flexion_verb)
+    else:
+        raise ValueError("Part of speech not recognised")
     return stem + ending
 
 
@@ -37,4 +37,3 @@ def write_list(wordlist):
     with open('fakewords.txt', 'w', encoding='utf-8') as file_out:
         for item in wordlist:
             file_out.write(item + '\n')
-        file_out.close()
