@@ -20,16 +20,19 @@ def generate_word(pos):
     elif pos in ("v", "V"):
         ending = random.choice(suffixes_verb) + random.choice(flexion_verb)
     else:
-        raise ValueError("Part of speech not recognised")
+        return ValueError("Part of speech not recognised")
     return stem + ending
 
 
 def generate_list(pos, length, total):
     words = []
-    while len(words) != total:
-        w = generate_word(pos)
-        if w not in words and len(w) <= length:
-            words.append(w)
+    if length <= 0 or total <= 0:
+        return ValueError("Positive values should be used")
+    else:
+        while len(words) != total:
+            w = generate_word(pos)
+            if w not in words and len(w) <= length:
+                words.append(w)
     return words
 
 
