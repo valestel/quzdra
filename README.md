@@ -11,4 +11,4 @@ quzdra.py [part of speech: a|n|v] [length] [quantity]
 The result will be stored in ```fakewords.txt``` file in the same directory where you saved Quzdra scripts.
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details

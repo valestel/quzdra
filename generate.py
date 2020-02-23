@@ -25,18 +25,18 @@ def generate_word(pos):
 
 
 def generate_list(pos, length, total):
-    words = []
-    if length <= 0 or total <= 0:
+    words = set()
+    if not length or not total:
         return ValueError("Positive values should be used")
     else:
         while len(words) != total:
             w = generate_word(pos)
-            if w not in words and len(w) <= length:
-                words.append(w)
+            if len(w) <= length:
+                words.add(w)
     return words
 
 
-def write_list(wordlist):
-    with open('fakewords.txt', 'w', encoding='utf-8') as file_out:
+def write_list(wordlist, result='fakewords.txt'):
+    with open(result, 'w', encoding='utf-8') as file_out:
         for item in wordlist:
             file_out.write(item + '\n')
